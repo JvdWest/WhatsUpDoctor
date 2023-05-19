@@ -39,6 +39,8 @@ class Patient(AuditableFields):
 class Practitioner(AuditableFields):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
+    id_number = models.CharField(max_length=13)
+    hpcsa_number = models.CharField(max_length=10)
     # Can be done with this, but requires auditable fields
     # patients = models.ManyToManyField(Patient)
 
@@ -46,4 +48,3 @@ class Practitioner(AuditableFields):
 class PractitionerPatient(AuditableFields, EffectiveRangeDates):
     practitioner = models.ForeignKey(Practitioner, on_delete=models.PROTECT)  # Prevents accidental deletion
     patient = models.ForeignKey(Patient, on_delete=models.PROTECT)
-
