@@ -38,3 +38,6 @@ To undo a migration or to apply to a specific migration
 
 Ignore unapplied migration
 `python manage.py migrate myapp migration_name --fake`
+
+Load seed data
+`python manage.py load_seed_data`
