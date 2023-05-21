@@ -16,6 +16,7 @@ COPY . .
 # Moving this to run command
 #RUN python manage.py migrate
 #RUN python manage.py load_seed_data
+RUN chmod +x init.sh
 
 # Expose the port on which your Django app will run (change it as per your app's configuration)
 EXPOSE 8000
