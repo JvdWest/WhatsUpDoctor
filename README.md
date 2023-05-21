@@ -18,7 +18,7 @@ In order to initialize the database and populate it with seed data, run the foll
 Patients have fixed assignments to practitioners. Please see `backoffice/managememnt/commands/load_seed_data.py` 
 to view these assignments.
 
-If you are using Windows, you can execute the init.bat file.
+If you are using Windows, you can execute the init.bat file to execute all commands above.
 
 Powershell: `.\init.bat`
 
