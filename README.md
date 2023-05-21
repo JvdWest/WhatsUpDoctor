@@ -22,6 +22,8 @@ If you are using Windows, you can execute the init.bat file to execute all comma
 
 Powershell: `.\init.bat`
 
+Windows Command Prompt: `init.bat`
+
 ## Test locally
 
 To get all patients in the system
