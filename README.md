@@ -9,9 +9,11 @@ To start Postgres, Postgres Adminer, and the WhatsUpDoctor API in Docker contain
 
 `docker-compose up --build -d`
 
-In order to initialize the database and populate it with seed data, run the following command
+In order to initialize the database and populate it with seed data, run the following commands
 
-`docker exec whatsupdoctor-whatsupdoctor-1 ./init.sh`
+`docker exec whatsupdoctor-whatsupdoctor-1 python manage.py migrate`
+
+`docker exec whatsupdoctor-whatsupdoctor-1 python manage.py load_seed_data`
 
 Patients have fixed assignments to practitioners. Please see `backoffice/managememnt/commands/load_seed_data.py` 
 to view these assignments.
