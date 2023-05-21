@@ -1,17 +1,25 @@
 # WhatsUpDoctor
 
 This is a Django project that is able to store patient and practitioner information in a relational 
-database, linked in a many-to-many relationship. One API is expose in order to get patient information.
+database, linked in a many-to-many relationship. One API is exposed in order to get patient information.
 
 ## Docker Compose Run
 
 To start Postgres, Postgres Adminer, and the WhatsUpDoctor API in Docker containers, run the following command
 
-`docker-compose up --build -d`
+`docker-compose up`
+
+Sometimes during the initial load, an issue occurs where the database is not ready yet when starting the API container,
+and this causes the API container to be faulty.
+To fix this, run `docker-compose down` and then again `docker-compose up`.
 
 In order to initialize the database and populate it with seed data, run the following commands
 
+Required
+
 `docker exec whatsupdoctor-whatsupdoctor-1 python manage.py migrate`
+
+Optional
 
 `docker exec whatsupdoctor-whatsupdoctor-1 python manage.py load_seed_data`
 
