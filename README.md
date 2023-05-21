@@ -1,4 +1,9 @@
-# Docker Compose Run
+# WhatsUpDoctor
+
+This is a Django project that is able to store patient and practitioner information in a relational 
+database, linked in a many-to-many relationship. One API is expose in order to get patient information.
+
+## Docker Compose Run
 
 To start Postgres, Postgres Adminer, and the WhatsUpDoctor API in Docker containers, run the following command
 
@@ -10,6 +15,16 @@ In order to initialize the database and populate it with seed data, run the foll
 
 Patients have fixed assignments to practitioners. Please see `backoffice/managememnt/commands/load_seed_data.py` 
 to view these assignments.
+
+## Test locally
+
+To get all patients in the system
+
+`GET http://localhost:8000/backoffice/patients`
+
+To only get patients linked to a specific practitioner, add `hpcsanumber` query parameter
+
+`GET http://localhost:8000/backoffice/patients?hpcsanumber=B9876543`
 
 ## Requirements
 
