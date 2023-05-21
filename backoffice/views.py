@@ -1,6 +1,5 @@
 import datetime
 import json
-
 from backoffice.models import Patient
 from django.http import JsonResponse
 from django.core import serializers

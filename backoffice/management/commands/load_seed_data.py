@@ -28,6 +28,7 @@ class Command(BaseCommand):
             user.save()
         except:
             print("User already exists")
+            user = User.objects.filter(username='admin').get()
 
         patients = []
         seed_data = [
