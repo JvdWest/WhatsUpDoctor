@@ -1,6 +1,4 @@
-import random
 from datetime import datetime
-
 from django.core.management.base import BaseCommand
 from django.utils.timezone import make_aware
 from backoffice.models import Patient, Practitioner, PractitionerPatient
@@ -13,12 +11,15 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         # Create and save seed data
 
-        user = User(
-            username='admin',
-            email='admin@example.com',
-            password='admin'
-        )
-        user.save()
+        try:
+            user = User(
+                username='admin',
+                email='admin@example.com',
+                password='admin'
+            )
+            user.save()
+        except:
+            print("User already exists")
 
         patients = []
         seed_data = [
@@ -131,14 +132,19 @@ class Command(BaseCommand):
             practitioner.save()
             practitioners.append(practitioner)
 
+        # Doctor-Patient Assignments
+        assignments = {
+            0: [0, 2],
+            1: [0, 4, 7],
+            2: [],
+            3: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+            4: [9],
+        }
+
         # Random assignments
-        for practitioner in practitioners:
-            random_number = random.choice([1, 2])
-            if random_number == 2:
-                continue
-            for patient in patients:
-                random_number = random.choice([1, 2])
-                if random_number == 1:
+        for index_prac, practitioner in enumerate(practitioners):
+            for index_pat, patient in enumerate(patients):
+                if index_pat not in assignments[index_prac]:
                     continue
                 practitioner_patient = PractitionerPatient(
                     practitioner=practitioner,
