@@ -6,6 +6,7 @@ services:
   db:
     image: postgres
     restart: always
+    container_name: whatsupdoctor-db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
@@ -19,6 +20,12 @@ services:
     restart: always
     ports:
       - 6080:8080
+  whatsupdoctor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
 
 volumes:
   postgres_data:

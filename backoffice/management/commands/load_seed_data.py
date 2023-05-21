@@ -9,8 +9,16 @@ class Command(BaseCommand):
     help = 'Load seed data'
 
     def handle(self, *args, **options):
-        # Create and save seed data
+        # Doctor-Patient Assignments
+        assignments = {
+            0: [0, 2],
+            1: [0, 4, 7],
+            2: [],
+            3: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+            4: [9],
+        }
 
+        # Create and save seed data
         try:
             user = User(
                 username='admin',
@@ -131,15 +139,6 @@ class Command(BaseCommand):
             )
             practitioner.save()
             practitioners.append(practitioner)
-
-        # Doctor-Patient Assignments
-        assignments = {
-            0: [0, 2],
-            1: [0, 4, 7],
-            2: [],
-            3: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-            4: [9],
-        }
 
         # Random assignments
         for index_prac, practitioner in enumerate(practitioners):

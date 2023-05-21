@@ -77,7 +77,8 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'HOST': 'whatsupdoctor-db',
+        # 'HOST': 'localhost',
         'PORT': '5432',
     }
 }
